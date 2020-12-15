@@ -4,7 +4,8 @@ class QuestionsController < ApplicationController
   # GET /questions
   # GET /questions.json
   def index
-    @questions = Question.all
+    questions = Question.all
+     render json: QuestionSerializer.new(questions)
   end
 
   # GET /questions/1
@@ -69,6 +70,6 @@ class QuestionsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def question_params
-      params.require(:question).permit(:codeQuestino, :optionA, :optionB, :optionC, :optionD, :correctAnswer, :explanation)
+      params.require(:question).permit(:codeQuestion, :optionA, :optionB, :optionC, :optionD, :correctAnswer, :explanation, :quiz_id)
     end
 end

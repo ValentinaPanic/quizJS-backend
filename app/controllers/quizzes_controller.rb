@@ -4,7 +4,9 @@ class QuizzesController < ApplicationController
   # GET /quizzes
   # GET /quizzes.json
   def index
-    @quizzes = Quiz.all
+    quizzes = Quiz.all
+
+    render json: QuizSerializer.new(quizzes)
   end
 
   # GET /quizzes/1
